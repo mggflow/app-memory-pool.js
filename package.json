@@ -1,8 +1,9 @@
 {
-  "name": "@mggflow/sample-package",
+  "name": "@mggflow/app-memory-pool",
   "version": "1.0.0",
   "description": "Sample of package on JS.",
-  "main": "src/index.js",
+  "main": "src/MemoryPool.js",
+  "type": "module",
   "scripts": {},
   "repository": {
     "type": "git",
