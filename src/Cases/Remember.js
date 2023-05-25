@@ -59,12 +59,14 @@ export default class Remember {
         this._queryString = query === null ? null : StringifyQuery.stringify(query)
 
         this._normalize()
-        this._memorySeries.saveAny(
+        const keys = this._memorySeries.saveAny(
             this._normalizedData ?? this._dataArr,
             this._queryString,
             (new Date()).getTime()
         )
         this._applyInsights()
+
+        return keys
     }
 
     _normalize() {

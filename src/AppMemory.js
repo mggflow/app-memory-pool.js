@@ -13,24 +13,24 @@ export default class AppMemory {
     /**
      * @type {MemorySeries}
      */
-    memorySeries
+    memories
 
     /**
      * @type {Remember}
      */
-    remembrance
+    rem
     /**
      * @type {Recall}
      */
-    recalling
+    rec
     /**
      * @type {MarkIrrelevant}
      */
-    marking
+    irrMark
     /**
      * @type {RecallIrrelevant}
      */
-    irrelevant
+    irrRec
 
     /**
      * Init app memory.
@@ -38,22 +38,22 @@ export default class AppMemory {
      */
     constructor(options = {}) {
         this.options = options
-        this.memorySeries = new MemorySeries()
+        this.memories = new MemorySeries()
 
-        this.remembrance = new Remember(this.memorySeries)
-        this.recalling = new Recall(this.memorySeries)
-        this.marking = new MarkIrrelevant(this.memorySeries)
-        this.irrelevant = new RecallIrrelevant(this.memorySeries)
+        this.rem = new Remember(this.memories)
+        this.rec = new Recall(this.memories)
+        this.irrMark = new MarkIrrelevant(this.memories)
+        this.irrRec = new RecallIrrelevant(this.memories)
 
         this._setUpOptions()
     }
 
     _setUpOptions() {
         if (this.options.relevanceTime !== undefined) {
-            this.memorySeries.setRelevanceTime(this.options.relevanceTime)
+            this.memories.setRelevanceTime(this.options.relevanceTime)
         }
         if (this.options.maxKeyLength !== undefined) {
-            this.memorySeries.setMaxKeyLength(this.options.maxKeyLength)
+            this.memories.setMaxKeyLength(this.options.maxKeyLength)
         }
     }
 

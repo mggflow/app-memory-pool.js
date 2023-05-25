@@ -5,17 +5,11 @@ export default class StringifyQuery {
     /**
      * Gen string for something.
      * @param query
-     * @returns {string}
+     * @returns {?string}
      */
-    static stringify (query) {
-        let s
-        if (Array.isArray(query) || typeof query === 'object' && query !== null) {
-            const predefinedId = query['id'] ?? query ['ID'] ?? query['Id'] ?? null
-            s = predefinedId ? String(predefinedId) : JSON.stringify(query)
-        } else {
-            s = String(query)
-        }
+    static stringify(query) {
+        if (query === undefined) return null
 
-        return s
+        return JSON.stringify(query)
     }
 }

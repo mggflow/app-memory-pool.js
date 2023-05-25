@@ -105,7 +105,7 @@ export default class MemorySeries {
             this.save(images[imageIndex], classKey, nowMilli)
         }
 
-        return this.getShortMemoryKeys()
+        return this.getShortKeys()
     }
 
     /**
@@ -177,7 +177,7 @@ export default class MemorySeries {
                    nowMilli = null, relevanceTime = null
     ) {
         const images = []
-        const keys = long ? this._longMemory.keys() : this.getShortMemoryKeys(classKey)
+        const keys = long ? this._longMemory.keys() : this.getShortKeys(classKey)
         if (keys === null) return null
 
         const timeStamp = (new Date()).getTime()
@@ -239,7 +239,7 @@ export default class MemorySeries {
      */
     markShortIrrelevant(classKey = null) {
         const classK = classKey ?? this.defaultClassKey
-        const shortKeys = this.getShortMemoryKeys(classK)
+        const shortKeys = this.getShortKeys(classK)
         if (shortKeys === null) return null
 
         for (let key of shortKeys) {
@@ -254,12 +254,16 @@ export default class MemorySeries {
 
     /**
      * Remove data images from short/long memory or/and remove relevance data.
+     * If short,long, relevance are falsy then short memory by classKey with its relevance will be clear.
+     * If short is truthy, then all short memory with all short relevance will be clear.
+     * If long is truthy, then all memory and relevance will be clear.
+     * If relevance is truthy, then short and long relevance will be clear.
      * @param {?string} classKey
-     * @param short
-     * @param long
-     * @param relevance
+     * @param {boolean} short
+     * @param {boolean} long
+     * @param {boolean} relevance
      */
-    oblivion(classKey = null, short = null, long = null, relevance = null) {
+    oblivion(classKey = null, short = false, long = false, relevance = false) {
         if (!short && !long && !relevance) {
             const classK = classKey ?? this.defaultClassKey
             if (this._shortMemory.has(classK)) this._shortMemory.delete(classK)
@@ -286,7 +290,7 @@ export default class MemorySeries {
      * @param classKey
      * @returns {string[]|null}
      */
-    getShortMemoryKeys(classKey = null) {
+    getShortKeys(classKey = null) {
         const classK = classKey ?? this.defaultClassKey
 
         return this._shortMemory.has(classK) ? this._shortMemory.get(classK) : null

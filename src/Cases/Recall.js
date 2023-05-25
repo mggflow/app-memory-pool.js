@@ -26,7 +26,7 @@ export default class Recall {
     recall(query = null, withRelevance = false, anyway = false) {
         this._queryString = query === null ? null : StringifyQuery.stringify(query)
 
-        if (anyway || this._memorySeries.shortIsRelevant(this._queryString)){
+        if (anyway || this._memorySeries.shortIsRelevant(this._queryString)) {
             return this._memorySeries.pullShort(this._queryString, withRelevance)
         }
 

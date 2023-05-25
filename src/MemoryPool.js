@@ -10,9 +10,12 @@ export default class MemoryPool {
      * Init new app memory for data family.
      * @param dataFamilyName
      * @param appMemoryOptions
+     * @returns {AppMemory}
      */
     static init(dataFamilyName, appMemoryOptions = {}) {
         this._memories.set(dataFamilyName, new AppMemory(appMemoryOptions))
+
+        return this.mem(dataFamilyName)
     }
 
     /**

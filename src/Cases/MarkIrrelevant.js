@@ -24,7 +24,7 @@ export default class MarkIrrelevant {
      * @returns {boolean|null}
      */
     mark(key = null, query = null, aimObj = null) {
-        if (key === null && aimObj === null){
+        if (key === null && aimObj === null) {
             this._queryString = query === null ? null : StringifyQuery.stringify(query)
 
             return this._memorySeries.markShortIrrelevant(this._queryString)
