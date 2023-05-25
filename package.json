@@ -1,21 +1,24 @@
 {
   "name": "@mggflow/app-memory-pool",
   "version": "1.0.0",
-  "description": "Sample of package on JS.",
+  "description": "JS library that simplifies and optimizes data management in the application.",
   "main": "src/MemoryPool.js",
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mggflow/sample-package.js.git"
+    "url": "git+https://github.com/mggflow/app-memory-pool.js.git"
   },
   "author": "Pavel Eliseev <deusagnis@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mggflow/sample-package.js/issues"
+    "url": "https://github.com/mggflow/app-memory-pool.js/issues"
   },
-  "homepage": "https://github.com/mggflow/sample-package.js#readme",
+  "homepage": "https://github.com/mggflow/app-memory-pool.js#readme",
   "devDependencies": {
-    "@jest/globals": "^29.5.0"
+    "@jest/globals": "^29.5.0",
+    "jest": "^29.5.0"
   }
 }
