@@ -5,7 +5,7 @@ JS library that simplifies and optimizes data management in the web application
 ## Installation
 
 ```
-npm -i mggflow/app-memory-pool
+npm i @mggflow/app-memory-pool
 ```
 
 ## Description
